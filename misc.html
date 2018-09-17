@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- fonts -->
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+   * {box-sizing:border-box;}
+body{font-family:Arial;padding:10px;background:#f1f1f1;}
+.header{padding:30px;text-align:center;background:white;}
+.header h1{font-size:50px;}
+.topnav{overflow:hidden; background-color:black;}
+.topnav a{float:left;display:block;color:white;padding:8px 16px;text-decoration:none;}
+.topnav a:hover{background-color:#ddd; color:black;}
+/* transition code */
+#myDiv {width:270px; height:200px; background-color:lightblue; border:1px solid black;overflow:auto;}
+#myDiv:hover {width:570px; height:500px; background-color:coral; padding:100px;border-radius:50px;}
+
+ /* Add to list */
+.addBtn{background:grey;padding:3px;cursor:pointer; transition:0.3s;}
+.addBtn:hover{background:lightgrey}
+
+/* Drag and drop */
+#div1, #div2 {
+    float: left;
+    width: 100px;
+    height: 50px;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid black;
+}
+
+</style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <h1>My Website</h1>
+        <p>Resize the browser window to see the effect</p>
+    </div>
+    <!-- Navigation bar -->
+    <div class="topnav">
+        <a href ="mywebsite.html">Home</a>
+        <a href="Todo.html">Todo</a>
+        <a href = "media.html">Media</a>
+        <a href="inputform.html">Inputform</a>
+        <a href="Misc.html">Misc</a>
+        <a href="#" style="float:right;">Link</a>
+    </div>
+    <br>
+    <h1>Input box</h1>
+    <form id="form1">
+        Name:  <input name="name" type="text" size="20">
+    </form> <br>
+    <button onclick ="outputName()">Submit</button>
+    <p id="demo"><p>
+<script>
+    function outputName() {
+    var x,y,a,b,answer, name;
+    x = document.getElementById("form1");
+    y = x.elements["name"].value;
+    document.getElementById("demo").innerHTML= " Hello "+ y +" <br>";
+    document.getElementById("demo").innerHTML+= y+" , I hope you are having a good day!  <br>";
+    }
+</script>
+
+ <!-- transition code -->
+
+ <br><br><br>
+<h1>Transition flow</h1>
+<p> Mouse over the shape below and it will change both in color and size>
+<p> Click the "Try it" button and mouse over the square and it will change gradually
+<br><br>
+<button onclick ="myTransition()">Try it</button>
+<div id = "myDiv"><h3>myDiv<h3></div>
+<script>
+function myTransition() {
+  document.getElementById("myDiv").style.WebkitTransition ="all 2s"; //Code for Safari 3.1 to 6
+  document.getElementById("myDiv").style.transition ="all 2s"; //standard syntax
+}
+</script>
+
+<!-- Add to list section -->
+<br><br>
+<h1>Add to list</h1>
+<div>
+    <h3>Input Form<h3>
+    <input type="text" id="myInput" placeholder="name">
+    <span onclick="newElement()" class="addBtn">Add</span>
+</div>
+<div>
+    <ul id="myUL">
+        <li>Hit the gym</li>
+        <li class="checked">Pay bills</li>
+        <li>Meet George</li>
+        <li>Buy eggs</li>
+        <li>Read a book</li>
+        <li>Organize office</li>
+    </ul>
+    <p id="new"><p>
+</div>
+<script>
+    function newElement(){
+    var li = document.createElement("li");
+    var inputValue=document.getElementById("myInput").value;
+    var t= document.createTextNode(inputValue);
+    li.appendChild(t);
+    if(inputValue===''){alert("you must write something!")}
+    else{
+    document.getElementById("myUL").appendChild(li);}
+    document.getElementById("myInput").value="";
+    }
+</script>
+
+<!-- fonts -->
+<div>
+    <h3>fonts</h3>
+    <div class="w3-padding w3-xlarge w3-teal">
+            <i class="fa fa-home"></i>
+            <i class="fa fa-search"></i>
+            <i class="fa fa-cloud"></i>
+            <i class="fa fa-trash"></i>
+            Welcome!
+             <p><i class="w3-jumbo w3-spin fa fa-home"></i></p>
+    </div>
+
+</div>
+
+<!-- Drag and drop -->
+<br><br>
+<h1>Drag and Drop</h1>
+
+<script>
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+    ev.target.appendChild(document.getElementById(data));
+}
+</script>
+</head>
+<body>
+
+<h2>Drag and Drop</h2>
+<p>Drag the image back and forth between the two div elements.</p>
+
+<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+  <!-- <img id="drag1" src="img_logo.gif" draggable="true" ondragstart="drag(event)" width="336" height="69"> -->
+
+  <img src="media\kitchen.jpg" draggable="true" ondragstart="drag(event)" id="drag1" width="88" height="31">
+</div>
+
+<div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+
+<br><br>
+</body>
+</html>
