@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <title>test</title>
+<style>
+
+</style>
+</head>
+<body>
+    <p> Click the  button</p>
+    <button onclick="myFunction()">Try it</button>
+    <p id ="demo"></p>
+<script>
+function myFunction(){
+    var str = "How are you doing today";
+    var res = str.split(" ");
+    document.getElementById("demo").innerHTML = res;
+    for (let i=0; i<res.length;i++){
+        document.getElementById("demo").innerHTML += res[i] +"<br>";  
+    }
+}
+
+</script>
+</body>
+</html>

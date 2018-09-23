@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+img {
+  margin: 10px;
+  width: 100px;
+}
+</style>
+</head>
+<body>
+        <button type="button" class="btn">Click me!</button>
+        <div class="text">Replace me!!</div>
+        <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+<script>
+    $('.btn').click(function(){
+  $('.text').text('loading...')
+})
+	$.ajax({
+    type:"GET",
+    data:{
+        q:"puppy",
+        restrict_sr:"true",
+    },
+	url:"https://www.reddit.com/r/aww/search.json",
+	success:function(response) {
+    
+    $('.text').html('')
+     for (var i=0; i <response.data.children.length;i++){
+     var image ="<img src='" + 
+         response.data.children[i].data.thumbnail +
+         "'/>";
+       $('.text').append(image);
+     }
+  }
+	});
+</script>
+</body>
+</html>
